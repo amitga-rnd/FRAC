@@ -1,7 +1,4 @@
-"""Raspberry Pi Face Recognition Treasure Box
-Positive Image Capture Script
-Copyright 2013 Tony DiCola 
-
+"""
 Run this script to capture positive images for training the face recognizer.
 """
 import glob
@@ -44,12 +41,18 @@ if __name__ == '__main__':
 		# Grab the count from the last filename.
 		count = int(files[-1][-7:-4])+1
 	print 'Capturing positive training images.'
-	print 'Press button or type c (and press enter) to capture an image.'
+	print 'Press type c (and press enter) to capture an image.'
 	print 'Press Ctrl-C to quit.'
 	while True:
 		# Check if button was pressed or 'c' was received, then capture image.
-		if box.is_button_up() or is_letter_input('c'):
+		if is_letter_input('c'):
+			print 'Previewing image...'
+                        camera.preview()
+                        
+                        if is_letter_input('o'):
+                        
 			print 'Capturing image...'
+			
 			image = camera.read()
 			# Convert image to grayscale.
 			image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)

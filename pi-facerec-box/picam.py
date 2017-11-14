@@ -33,3 +33,15 @@ class OpenCVCapture(object):
 		cv2.imwrite(config.DEBUG_IMAGE, image)
 		# Return the captured image data.
 		return image
+		
+	def preview(self):
+		"""Read a single frame from the camera and return the data as an OpenCV
+		image (which is a numpy array).
+		"""
+		# This code is based on the picamera example at:
+		# http://picamera.readthedocs.org/en/release-1.0/recipes1.html#capturing-to-an-opencv-object
+		# Capture a frame from the camera.
+
+		with picamera.PiCamera() as camera:
+			camera.start_preview()
+

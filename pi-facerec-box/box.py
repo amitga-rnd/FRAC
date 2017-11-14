@@ -19,19 +19,20 @@ if __name__ == '__main__':
 	camera = config.get_camera()
 	box = hardware.Box()
 	# Move box to locked position.
-	box.lock()
+	box.disable()
 	print 'Running box...'
-	print 'Press button to lock (if unlocked), or unlock if the correct face is detected.'
+	print 'Press button 'c' to unlock, if the correct face is detected.'
 	print 'Press Ctrl-C to quit.'
+	letter = 'c'
 	while True:
 		# Check if capture should be made.
 		# TODO: Check if button is pressed.
-		if box.is_button_up():
-			if not box.is_locked:
-				# Lock the box if it is unlocked
-				box.lock()
-				print 'Box is now locked.'
-			else:
+		if sys.stdin.read(1).lower() == letter:
+#			if not box.is_locked:
+#				# Lock the box if it is unlocked
+#				box.lock()
+#				print 'Box is now locked.'
+#			else:
 				print 'Button pressed, looking for face...'
 				# Check for the positive face and unlock if found.
 				image = camera.read()
@@ -53,6 +54,6 @@ if __name__ == '__main__':
 					confidence)
 				if label == config.POSITIVE_LABEL and confidence < config.POSITIVE_THRESHOLD:
 					print 'Recognized face!'
-					box.unlock()
+					box.enable()
 				else:
 					print 'Did not recognize face!'

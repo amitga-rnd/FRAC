@@ -1,19 +1,12 @@
-# Raspberry Pi Face Recognition Treasure Box Configuration
-# Copyright 2013 Tony DiCola 
-
 # Edit the values below to configure the training and usage of the
 # face recognition box.
 
-# Pi GPIO port which is connected to the lock servo signal line.
-LOCK_SERVO_PIN = 18
-# Pulse width value (in microseconds) for the servo at the unlocked and locked
-# position.  Center should be a value of 1500, max left a value of 1000, and 
-# max right a value of 2000.
-LOCK_SERVO_UNLOCKED = 2000
-LOCK_SERVO_LOCKED   = 1100
+# Pi GPIO port which is connected to the relay.
+RELAY_PIN = 8
 
 # Pi GPIO port which is connected to the button.
 BUTTON_PIN = 25
+
 # Down and up values for the button.  The code expects to detect a down to up
 # transition as an activation of the button.  Therefore a normally open button
 # should be False (low) when down and True (high) when up.
